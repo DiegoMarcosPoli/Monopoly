@@ -79,26 +79,9 @@ namespace Serve_pascalopoly
         {
             get;
             private set;
-        }
-
+        }     
         
-        
-
-
-        public byte[] GetBufferHead()
-        {
-            if(Buffer.Count > 0)
-            {
-                byte[] vs = Buffer.Dequeue();
-                return vs;
-            }
-            else
-            {
-                return new byte[0];
-            }
-            
-
-        }
+               
 
         public string GetLocalIPAddress()
         {

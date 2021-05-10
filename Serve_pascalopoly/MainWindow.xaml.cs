@@ -20,6 +20,7 @@ namespace Serve_pascalopoly
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Dictionary<string, string> clientGiocatore;
         public MainWindow()
         {
             InitializeComponent();
@@ -28,10 +29,40 @@ namespace Serve_pascalopoly
 
 
         }
-
-        public void Disambiguatore(byte[] vs)
+        private List<string> log;
+        
+        public void Aggiorna(string[] cmd)
         {
-            //TODO: roba
+            string[] tmp;
+            foreach (string s in cmd)
+            {
+                log.Add(s);
+                tmp=s.Split('-');
+                switch (tmp[0])
+                {
+                    case "tiro":
+                        SpostaPedina(tmp[1],Convert.ToInt32(tmp[2]), Convert.ToInt32(tmp[3]),tmp[4]);
+                }
+            }            
+
+        }
+        public void SpostaPedina(string nickname ,int dado1, int dado2, string doppio)
+        {
+            
+        }
+        public void Disambiguatore(string vs)
+        {
+            string[] tmp;
+            tmp = vs.Split('|');
+            switch(tmp[0])
+            {
+                case "aggiorna":
+                    Aggiorna(tmp);
+
+                    break;
+            }
+
+            
         }
 
         public void CheckConsole()
